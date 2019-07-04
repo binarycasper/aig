@@ -1,4 +1,7 @@
 const path = require("path");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
 
@@ -26,7 +29,59 @@ module.exports = {
                 }
             }
         ]
-    }
-}
+    },
+
+    plugins: [
+        new CopyWebpackPlugin([
+            /*{
+                from: path.resolve(__dirname, './src/index.html'),
+                to: path.resolve(__dirname, 'build')
+            },*/
+            {
+                from: path.resolve(__dirname, './src/assets', '**', '*'),
+                to: path.resolve(__dirname, 'build')
+            }
+        ]),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: './src/index.html',
+            inject: 'head',
+            chucks: ['vendor', 'app'],
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeAttributeQuotes: true 
+            }
+        }),
+        new webpack.DefinePlugin({
+            'typeof CANVAS_RENDERER': JSON.stringify(true),
+            'typeof WEBGL_RENDERER': JSON.stringify(true)
+        }),
+        new webpack.HashedModuleIdsPlugin(),
+    ],
+
+    optimization: {
+        runtimeChunk: 'single',
+        splitChunks: {
+            chunks: 'all',
+            minSize: 0,
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            },
+        },
+    },
+
+    devServer: {
+        contentBase: path.resolve(__dirname, 'build'),
+    },
+};
 
     
