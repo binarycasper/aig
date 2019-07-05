@@ -71,7 +71,7 @@ export class playScene extends Phaser.Scene{
         let minDistance = game.config.width;
         this.platformGroup.getChildren().forEach(function(platform){
             let platformDistance = game.config.width - platform.x - platform.displayWidth/2;
-            let minDisplay = Math.min(minDistance, platformDistance);
+            minDistance = Math.min(minDistance, platformDistance);
             if(platform.x < - platform.displayWidth/2){
                 this.platformGroup.killAndHide(platform);
                 this.platformGroup.remove(platform);
@@ -83,4 +83,4 @@ export class playScene extends Phaser.Scene{
             this.addPlatform(nextPlatformWidth, game.config.width + nextPlatformWidth/2);
         }
     }
-}; 
+}
