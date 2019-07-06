@@ -4,22 +4,29 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-
     mode: 'production',
-
     entry: {
         app: './src/index.js'
     },
-
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'app.bundle.js'
     },
-
     module: {
         rules: [
             {
+                enforce: "pre",
                 test: /\.js$/,
+                exclude: /node_modules/,
+                include: path.resolve(__dirname, 'src/'),
+                loader: "eslint-loader",
+                options: {
+                    fix: true
+                }
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
                 include: path.resolve(__dirname, 'src/'),
                 use: {
                     loader: 'babel-loader',
@@ -30,13 +37,8 @@ module.exports = {
             }
         ]
     },
-
     plugins: [
         new CopyWebpackPlugin([
-            /*{
-                from: path.resolve(__dirname, './src/index.html'),
-                to: path.resolve(__dirname, 'build')
-            },*/
             {
                 from: path.resolve(__dirname, './src/assets', '**', '*'),
                 to: path.resolve(__dirname, 'build')
@@ -59,7 +61,6 @@ module.exports = {
         }),
         new webpack.HashedModuleIdsPlugin(),
     ],
-
     optimization: {
         runtimeChunk: 'single',
         splitChunks: {
@@ -78,7 +79,6 @@ module.exports = {
             },
         },
     },
-
     devServer: {
         contentBase: path.resolve(__dirname, 'build'),
     },

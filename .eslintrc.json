@@ -1,17 +1,30 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "amd": true,
+        "commonjs": true,
+        "node": true
     },
     "extends": "eslint:recommended",
     "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "Phaser": true
     },
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
+        "no-console": "off",
+        "indent": [
+            "error", 
+            4
+        ],
+        "linebreak-style": "off",
+        "quotes": "off",
+        "semi": [
+            "error",
+            "always"
+        ]
     }
 }
