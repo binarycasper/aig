@@ -12,10 +12,10 @@ export let gameOptions = {
     jumpForce: 400,
     playerStartPosition: 200,
     jumps: 2
-}
+};
 
-window.onload = function() {
-    let gameConfig ={
+window.onload = function(){
+    let gameConfig = {
         type: Phaser.AUTO,
         width: 1334,
         height: 750,
@@ -25,13 +25,13 @@ window.onload = function() {
         physics: {
             default: "arcade"
         }
-    }
+    };
 
     game = new Phaser.Game(gameConfig);
     window.focus();
     resize();
-    window.addEventListener("rezise", resize, false);
-}
+    window.addEventListener("resize", resize, false);
+};
 
 function resize(){
     let canvas = document.querySelector("canvas");
@@ -46,5 +46,5 @@ function resize(){
     else{
         canvas.style.width = (windowHeight * gameRatio) + "px";
         canvas.style.height = windowHeight + "px"; 
-    }
+    }  
 }

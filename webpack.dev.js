@@ -8,6 +8,10 @@ module.exports = merge(common, {
     module: {
         rules: [
             {
+                test: /\.(jpe?g|png)$/i,
+                loader: 'file-loader',
+            },
+            {
                 enforce: "pre",
                 test: /\.js$/,
                 exclude: /node_modules/,

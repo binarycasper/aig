@@ -1,3 +1,5 @@
+import platformImg from '../assets/platform.png';
+import playerImg from '../assets/player.png'; 
 import { game, gameOptions } from '../index'; 
 
 export class playScene extends Phaser.Scene{   
@@ -5,8 +7,8 @@ export class playScene extends Phaser.Scene{
         super("playScene");
     }
     preload(){
-        this.load.image("platform", "./platform.png");
-        this.load.image("player", "./player.png");
+        this.load.image("platform", platformImg);
+        this.load.image("player", playerImg);
     }
     create(){
         this.platformGroup = this.add.group({
