@@ -1,19 +1,19 @@
 {
-  "name": "aig",
-  "version": "1.0.0",
-  "description": "An arcade game made with Phaser",
-  "repository": "https://github.com/binarycasper/aig.git",
-  "author": "binarycasper <binarycasper@gmail.com>",
-  "license": "GPL-3.0",
-  "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --experimental-scope-hoisting"
-  },
-  "devDependencies": {
-    "eslint": "^6.1.0",
-    "parcel-bundler": "^1.12.3"
-  },
-  "dependencies": {
-    "phaser": "^3.18.1"
-  }
+    "name": "aig",
+    "version": "1.0.0",
+    "description": "An arcade game made with Phaser",
+    "repository": "https://github.com/binarycasper/aig.git",
+    "author": "binarycasper <binarycasper@gmail.com>",
+    "license": "GPL-3.0",
+    "scripts": {
+        "start": "parcel src/index.html",
+        "build": "parcel build src/index.html --experimental-scope-hoisting"
+    },
+    "devDependencies": {
+        "eslint": "^6.1.0",
+        "parcel-bundler": "^1.12.3"
+    },
+    "dependencies": {
+        "phaser": "^3.18.1"
+    }
 }
