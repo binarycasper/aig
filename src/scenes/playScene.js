@@ -1,3 +1,4 @@
+import Phaser from "phaser";
 import platformImg from "../assets/platform.png";
 import playerImg from "../assets/player.png";
 import { game, gameOptions } from "../index";

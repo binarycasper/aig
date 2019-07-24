@@ -1,16 +1,16 @@
 language: node_js
 node_js:
   - "12"
-cache: 
+cache:
   yarn: true
-  directories: 
-    - node_modules 
+  directories:
+    - node_modules
 script: yarn build
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: build 
+  local_dir: dist
   keep_history: true
   on:
-    branch: master 
+    branch: master
